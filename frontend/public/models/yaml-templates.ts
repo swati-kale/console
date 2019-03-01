@@ -801,4 +801,25 @@ spec:
   machineSelector:
     matchLabels:
       node-role.kubernetes.io/master: ""
-`);
+`).setIn([referenceForModel(k8sModels.CustomResourceDefinitionModel), 'rhdm-trial'], `
+apiVersion: app.kiegroup.org/v1
+kind: KieApp
+metadata:
+  name: rhdm-trial
+spec:
+  environment: rhdm-trial
+   `).setIn([referenceForModel(k8sModels.CustomResourceDefinitionModel), 'rhpam-production'], `
+apiVersion: app.kiegroup.org/v1
+kind: KieApp
+metadata:
+  name: rhdm-production
+spec:
+  environment: rhdm-production
+   `).setIn([referenceForModel(k8sModels.CustomResourceDefinitionModel), 'rhpam-authoring'], `
+apiVersion: app.kiegroup.org/v1
+kind: KieApp
+metadata:
+  name: rhdm-authoring
+spec:
+  environment: rhdm-authoring
+   `);
